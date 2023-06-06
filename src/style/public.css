@@ -1,0 +1,44 @@
+.swal-icon--error__line--left {
+    transform: rotate(45deg);
+    left: 15px;
+}
+.swal-icon--success__line--tip {
+    left: 15px !important;
+}
+
+h5.middile {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #888; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ h5.middile span { 
+     background:#fff; 
+     padding:0 10px; 
+ }
+
+ .nav-link {
+    cursor: pointer;
+ }
+
+
+ input[type=number]::-webkit-inner-spin-button, 
+ input[type=number]::-webkit-outer-spin-button { 
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     margin: 0; 
+ }
+
+
+ .materiUnalAvailable,.branchAvailable{
+    display: none;
+ }
+ .materialAvailable{
+    display: block;
+ }
+ .branchUnavailable{
+    display: flex;
+ }
