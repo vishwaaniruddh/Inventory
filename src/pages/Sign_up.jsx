@@ -70,8 +70,9 @@ function Sign_up() {
                         </div>
                         <button className="btn btn-primary shadow-2 mb-4">Sign Up</button>
 
+
+                        <div className="message">{message ? <h3><b>{message}</b></h3> : null}</div>
                         <p className="mb-0 text-muted">Allready have an account? <a href="./Login"> Log in</a></p>
-                        <div className="message">{message ? <p>{message}</p> : null}</div>
                     </div>
                 </div>
                 </form>

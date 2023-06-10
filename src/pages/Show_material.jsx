@@ -53,12 +53,26 @@ function Show_material() {
 
 
 if(loading){
+  return (
+    <div className="pcoded-main-container">
+      <div className="pcoded-wrapper">
+        <div className="pcoded-content">
+          <div className="pcoded-inner-content">
+            <div className="main-body">
+              <h3>Please wait ...</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  )
 
 }else{
   const lastPost = number * postPerPage;
   const firstPost = lastPost - postPerPage;
-  const currentPost = post.slice(firstPost, lastPost);
-  const PageCount = Math.ceil(post.length / postPerPage);
+  const currentPost = post && post.slice(firstPost, lastPost);
+  const PageCount = post && Math.ceil(post.length / postPerPage);
   const ChangePage = ({ selected }) => {
     console.log(selected + 1);
     setNumber(selected + 1);
@@ -74,7 +88,7 @@ if(loading){
               <div className="page-wrapper">
                 <div className='card'>
                   <div className='card-header'>
-                    <h5>All Vendors</h5>
+                    <h5>Materials</h5>
                   </div>
                   <div className='card-body'>
                     <table className="table">
@@ -86,11 +100,10 @@ if(loading){
                           <th>Model</th>
                           <th>Created by </th>
                           <th>Actions</th>
-
                         </tr>
                       </thead>
                       <tbody>
-                        {currentPost.map((users, index) => {
+                        {currentPost && currentPost.map((users, index) => {
                           return (
 
                             <tr key={index}

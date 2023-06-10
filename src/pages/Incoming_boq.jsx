@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 // import { ShowIncomingBoqData } from '../datatables/ShowIncomingBoqData';
+import * as AiIcons from 'react-icons/ai';
+
 function Incoming_boq() {
 
     const [post, setPost] = useState([])
@@ -20,6 +22,20 @@ function Incoming_boq() {
     }, []);
 
     if (loading) {
+        return (
+            <div className="pcoded-main-container">
+                <div className="pcoded-wrapper">
+                    <div className="pcoded-content">
+                        <div className="pcoded-inner-content">
+                            <div className="main-body">
+                                <h3>Please wait ...</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        )
 
     } else {
 
@@ -45,27 +61,24 @@ function Incoming_boq() {
                                             <h5>Incoming BOQ</h5>
                                         </div>
                                         <div className='card-body'>
-                                            <table className='table'>
+                                            <table className='table table-hover'>
                                                 <thead>
                                                     <tr>
 
 
                                                         <th>Sr no</th>
-                                                        <th>ID</th>
                                                         <th>ATM - ID</th>
                                                         <th>ATM ID -2</th>
-                                                        <th>ATM ID -3</th>
-                                                        <th>Serial NO</th>
+
                                                         <th>Bank</th>
                                                         <th>Customer</th>
                                                         <th>Address</th>
                                                         <th>City</th>
                                                         <th>State</th>
                                                         <th>Pincode</th>
-                                                        <th>Engineer</th>
-                                                        <th>Engineer NO</th>
-                                                        <th>BM Name</th>
-                                                        <th>Selection type</th>
+                                                        <th>Contact Person</th>
+                                                        <th>Contact Person NO</th>
+                                                        <th>BM</th>
                                                         <th>Created at</th>
                                                         <th>Edit</th>
                                                     </tr>
@@ -76,11 +89,8 @@ function Incoming_boq() {
                                                         return (
                                                             <tr key={index}>
                                                                 <td>{users.srno}</td>
-                                                                <td>{users.id}</td>
                                                                 <td>{users.atmid}</td>
                                                                 <td>{users.atmid2}</td>
-                                                                <td>{users.atmid}3</td>
-                                                                <td>{users.serial_number}</td>
                                                                 <td>{users.bank}</td>
                                                                 <td>{users.customer}</td>
                                                                 <td>{users.address}</td>
@@ -90,9 +100,12 @@ function Incoming_boq() {
                                                                 <td>{users.engineer}</td>
                                                                 <td>{users.engineer_number}</td>
                                                                 <td>{users.bm_name}</td>
-                                                                <td>{users.selection_type}</td>
                                                                 <td>{users.created_at}</td>
-                                                                <td><Link to={'/Edit_boq/' + users.id}><button className="btn btn-primary">Edit</button></Link></td>
+                                                                <td>
+
+                                                                    
+
+                                                                    <Link to={'/Edit_boq/' + users.id}><AiIcons.AiOutlineEdit />Edit</Link></td>
 
                                                             </tr>
 

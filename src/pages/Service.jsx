@@ -3,15 +3,11 @@ import Pagination from "react-paginate";
 import '../assets/pagination.css'
 import { Link } from "react-router-dom";
 import swal from 'sweetalert';
-
 import ServiceCancelModal from '../child/ServiceCancelModal';
 
 
 const Service = () => {
-
-    console.log('hi')
     document.title = "Service - CSS Inventory";
-
     const [loading, setLoading] = useState(true);
     const [customer, setCustomer] = useState({});
     const [totalRecords, settotalRecords] = useState(0)
@@ -21,6 +17,7 @@ const Service = () => {
             const response = await fetch(`https://sarmicrosystems.in/react_inventory/API/components/get_customer.php`);
             const json = await response.json();
             setCustomer(json);
+            setLoading(false)
         }
         fetchData();
     }, [])
@@ -41,76 +38,10 @@ const Service = () => {
         customer: '',
         atmId: ''
     })
-
-
     const handleChange = (e) => {
         setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
-
-
-
-
-
-    // const acceptRequest = (mis_id) => {
-    //     console.log(mis_id);
-
-    //     swal({
-    //         title: "Are you sure want to accept it?",
-    //         text: "Check before proceed!",
-    //         icon: "warning",
-    //         buttons: true,
-    //         dangerMode: true,
-    //         confirmButtonText: "Yes, accept it!",
-    //         cancelButtonText: "No, cancel plz!",
-    //         closeOnConfirm: false,
-    //         closeOnCancel: false
-    //     })
-    //         .then((isConfirm) => {
-    //             if (isConfirm) {
-
-    //                 // Here is the API CAlling 
-
-    //                 try {
-
-    //                     fetch(`https://sarmicrosystems.in/react_inventory/API/material/acceptRequestRemark.php`,
-    //                         {
-    //                             method: 'POST',
-    //                             body: JSON.stringify({
-    //                                 id: mis_id,
-    //                             })
-    //                         })
-    //                         .then(res => res.json())
-    //                         .then((response) => {
-    //                             console.log(response);
-
-    //                             if (response.response === 202) {
-    //                                 swal(response.message, {
-    //                                     icon: "success",
-    //                                 });
-
-    //                             } else {
-    //                                 swal(response.message, {
-    //                                     icon: "error",
-    //                                 });
-
-    //                             }
-
-    //                         })
-    //                 } catch (e) {
-    //                     console.log(e)
-    //                 }
-
-
-    //             } else {
-    //                 swal("User is safe!");
-    //             }
-    //         });
-
-    // }
-
     const acceptRequest = (mis_id) => {
-        console.log(mis_id);
-    
         swal({
             title: "Are you sure want to accept it?",
             text: "Check before proceed!",
@@ -138,8 +69,7 @@ const Service = () => {
                             })
                             .then(res => res.json())
                             .then((response) => {
-                                console.log(response);
-    
+                                
                                 if (response.response === 202) {
                                     swal(response.message, {
                                         icon: "success",
@@ -154,7 +84,6 @@ const Service = () => {
     
                             })
                     } catch (e) {
-                        console.log(e)
                     }
     
     
@@ -193,7 +122,6 @@ const Service = () => {
     const paginateButton = async (data) => {
         setWait(true);
         setCurrentPage(data.selected);
-        console.log(data.selected);
         let pageNumber = data.selected + 1;
         let res = await fetch(`https://sarmicrosystems.in/react_inventory/API/material/join_getServiceRequest.php`,
             {
@@ -216,16 +144,25 @@ const Service = () => {
 
 
     }
-
-
+console.log(loading)
+    if(loading){
+        return (
+            <div className="pcoded-main-container">
+              <div className="pcoded-wrapper">
+                <div className="pcoded-content">
+                  <div className="pcoded-inner-content">
+                    <div className="main-body">
+                      <h3>Please wait ...</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+     
+     )
+    }else{
 
     return (
-
-
-
-
-
-
         <div className="pcoded-main-container">
             <div className="pcoded-wrapper">
                 <div className="pcoded-content">
@@ -346,6 +283,8 @@ const Service = () => {
                                                 <td>{index + 1}</td>
                                                 <td>
                                                     <Link to={'/materialUpdate/' + users.mis_id}>
+                                                    
+                                                    {/* <IconName.GrFormView /> */}
                                                         <button className="btn btn-info">View</button>
                                                     </Link>
 
@@ -435,6 +374,7 @@ const Service = () => {
 
 
     )
+}
 
 }
 

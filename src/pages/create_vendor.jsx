@@ -3,38 +3,50 @@ import { getUser } from '../Utils/Common';
 import swal from 'sweetalert';
 import Vendor_child from '../child/Vendor_child';
 function Create_vendor() {
+  
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [contact, setContact] = useState("");
-    const [address, setAddress] = useState("");
-    const [message, setMessage] = useState("");
-    const [modalShow, setModalShow] = useState(false);
-    const [modalData, setModalData] = useState();
-    const [post, setPost] = useState([]);
-    const [number, setNumber] = useState(1); // No of pages
-    const [postPerPage] = useState(10);
-    const user = getUser();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [address, setAddress] = useState("");
+  const [message, setMessage] = useState("");
+  const [modalShow, setModalShow] = useState(false);
+  const [modalData, setModalData] = useState();
+  const [post, setPost] = useState([]);
+  const [number, setNumber] = useState(1); // No of pages
+  const [postPerPage] = useState(10);
+  const user = getUser();
+
+  const closeBootstrapModal = () => {
+    setModalShow(false);
+    setModalData();
+  };
 
 
 
 
-    useEffect(() => {
-        const fetchApi = async () => {
-          const data = await fetch(`https://sarmicrosystems.in/react_inventory/API/get_vendor.php`);
-          const dataJ = await data.json();
-          setPost(dataJ);
-        };
-        fetchApi();
-      }, []);
-      const lastPost = number * postPerPage;
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      const data = await fetch(`https://sarmicrosystems.in/react_inventory/API/get_vendor.php`);
+      const dataJ = await data.json();
+      setPost(dataJ);
+    };
+    fetchApi();
+  }, []);
+
+  const lastPost = number * postPerPage;
   const firstPost = lastPost - postPerPage;
-  const currentPost = post.slice(firstPost, lastPost);
-  const PageCount = Math.ceil(post.length / postPerPage);
+  const currentPost = post && post.slice(firstPost, lastPost); // Check if post is not null or undefined
+  const PageCount = post ? Math.ceil(post.length / postPerPage) : 0; // Check if post is not null or undefined
+  
+
+
   const ChangePage = ({ selected }) => {
     console.log(selected + 1);
     setNumber(selected + 1);
   }
+  
       const deleteuser = (id) => {
         console.log(id);
     
@@ -47,31 +59,15 @@ function Create_vendor() {
           })
           .then((willDelete) => {
             if (willDelete) {
-    
-                // Here is the API CAlling 
-    
-              swal("Poof! User has been deleted!", {
+                // Here is the API CAlling   
+            swal("Poof! User has been deleted!", {
                 icon: "success",
               });
-    
             } else {
               swal("User is safe!");
             }
           });
-
-        
         };
-
-
-
-
-
-
-
-
-
-
-
 
 
     
@@ -94,7 +90,7 @@ function Create_vendor() {
             
             if(resJson===1){
                 swal("Good job!", "Vendor added Successfully !", "success");
-                window.location.reload();
+                // window.location.reload();
             }else{
                 swal("Error !", "Vendor added Error !", "error");
             }
@@ -167,7 +163,7 @@ function Create_vendor() {
                         </tr>
                       </thead>
                       <tbody>
-                        {currentPost.map((users, index) => {
+                        {currentPost && currentPost.map((users, index) => {
                           return (
 
                             <tr key={index}
@@ -198,8 +194,12 @@ function Create_vendor() {
             {
                 modalData ?
                     <Vendor_child
-                        show={modalShow} id={modalData}
-                        onHide={() => { console.log(modalData); setModalShow(false); setModalData(); }}
+                    show={modalShow}
+                    id={modalData}
+                    onHide={closeBootstrapModal} // 
+
+                        // show={modalShow} id={modalData}
+                        // onHide={() => { setModalShow(false); setModalData(); }}
                     />
                     : ''
             }

@@ -126,7 +126,7 @@ function Navbar(props) {
                 <ul className="nav pcoded-inner-navbar" style={{ display: 'block' }}>
                   {loading ? (
                     <li>Loading...</li>
-                  ) : ( data &&
+                  ) : (data &&
                     data.map((item, index) => (
                       <li
                         key={index}
@@ -150,10 +150,11 @@ function Navbar(props) {
                               <span className="pcoded-mtext">{item?.title}</span>
                             </NavLink>
                           ) : (
-                            <button className="nav-link" style={{background: 'transparent',
-                            border: 'none',
-                            color: 'white',
-                            fontSize: '13px'
+                            <button className="nav-link" style={{
+                              background: 'transparent',
+                              border: 'none',
+                              color: 'white',
+                              fontSize: '13px'
                             }}  >
                               {item?.title === 'Masteradmin' ? (
                                 <AiIcons.AiFillHome />
@@ -217,9 +218,36 @@ function Navbar(props) {
                           </ul>
                         ) : null}
                       </li>
+
                     ))
-                  )}
+
+                  )
+                  }
+
+
+
+                  <li>
+                    <button className="nav-link" style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'white',
+                      fontSize: '13px'
+                    }} onClick={handleLogout} >
+                      <AiIcons.AiOutlineLogout />
+                      <span>
+                        Logout
+                      </span>
+
+
+                    </button>
+                  </li>
+
+
+
                 </ul>
+
+
+
                 <div className="ps__rail-x">
                   <div className="ps__thumb-x" tabIndex="0"></div>
                 </div>

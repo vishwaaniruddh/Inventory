@@ -54,7 +54,20 @@ const Roles = () => {
 
 
     if (loading) {
-
+        return (
+            <div className="pcoded-main-container">
+              <div className="pcoded-wrapper">
+                <div className="pcoded-content">
+                  <div className="pcoded-inner-content">
+                    <div className="main-body">
+                      <h3>Please wait ...</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+          )
     } else {
         return (
             <div className="pcoded-main-container">

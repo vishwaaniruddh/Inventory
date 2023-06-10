@@ -111,108 +111,128 @@ function Edit_boq() {
             }
         }
 
-        return (
+        if (loading) {
+            return (
+                <div className="pcoded-main-container">
+                    <div className="pcoded-wrapper">
+                        <div className="pcoded-content">
+                            <div className="pcoded-inner-content">
+                                <div className="main-body">
+                                    <h3>Please wait ...</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div className="pcoded-main-container">
-                {console.log(data)}
-                <div className="pcoded-wrapper">
-                    <div className="pcoded-content">
-                        <div className="pcoded-inner-content">
-                            <div className="main-body">
-                                <div className="page-wrapper">
+            )
 
-                                    <div className='card'>
-                                        <div className='card-header'>
-                                            <h5>Edit BOQ</h5>
-                                        </div>
-                                        <div className='card-body'>
-                                            <section>
-                                                <h4>PROJECT TRACKER</h4>
-                                                <hr></hr>
-                                                <div className="view-info">
-                                                    <div className="row">
-                                                        <div className="col-lg-12">
-                                                            <div className="general-info">
-                                                                <div className="row">
-                                                                    <div className="col-sm-6">
-                                                                        <div className="table-responsive">
-                                                                            <table className="table" border="1">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th scope="row">ATMID </th>
-                                                                                        <td >
-                                                                                            {data.atmid}
-                                                                                        </td>
+        } else {
 
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">ATMID 2 </th>
-                                                                                        <td>{data.atmid2}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">ATMID 3</th>
 
-                                                                                        <td>{data.atmid3}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">Tracker No</th>
+            return (
 
-                                                                                        <td>{data.serial_number}</td>
-                                                                                    </tr>
+                <div className="pcoded-main-container">
 
-                                                                                    <tr>
-                                                                                        <th scope="row">BANK</th>
+                    <div className="pcoded-wrapper">
+                        <div className="pcoded-content">
+                            <div className="pcoded-inner-content">
+                                <div className="main-body">
+                                    <div className="page-wrapper">
 
-                                                                                        <td>{data.bank}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">CUSTOMER</th>
+                                        <div className='card'>
+                                            <div className='card-header'>
+                                                <h5>Edit BOQ</h5>
+                                            </div>
+                                            <div className='card-body'>
+                                                <section>
 
-                                                                                        <td>{data.customer}</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                    <div className="view-info">
+                                                        <div className="row">
+                                                            <div className="col-lg-12">
+                                                                <div className="general-info">
+                                                                    <div className="row">
+                                                                        <div className="col-sm-6">
+                                                                            <div className="table-responsive">
+                                                                                <table className="table" border="1">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <th scope="row">ATM ID </th>
+                                                                                            <td >
+                                                                                                {data.atmid}
+                                                                                            </td>
+
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">ATM ID 2 </th>
+                                                                                            <td>{data.atmid2}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">ATM ID 3</th>
+
+                                                                                            <td>{data.atmid3}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">Tracker No</th>
+
+                                                                                            <td>{data.serial_number}</td>
+                                                                                        </tr>
+
+                                                                                        <tr>
+                                                                                            <th scope="row">Bank</th>
+
+                                                                                            <td>{data.bank}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">Customer</th>
+
+                                                                                            <td>{data.customer}</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
 
-                                                                    <div className="col-sm-6">
-                                                                        <div className="table-responsive">
-                                                                            <table className="table" border="1">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th scope="row">CITY</th>
+                                                                        <div className="col-sm-6">
+                                                                            <div className="table-responsive">
+                                                                                <table className="table" border="1">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <th scope="row">City</th>
 
-                                                                                        <td>{data.city}</td>
-                                                                                    </tr>
+                                                                                            <td>{data.city}</td>
+                                                                                        </tr>
 
-                                                                                    <tr><th scope="row">STATE</th>
+                                                                                        <tr><th scope="row">State</th>
 
-                                                                                        <td>{data.state}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">PINCODE </th>
+                                                                                            <td>{data.state}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">Pincode </th>
 
-                                                                                        <td>{data.pincode}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">ADDRESS</th>
+                                                                                            <td>{data.pincode}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">Address</th>
 
-                                                                                        <td>{data.address}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">ENGINEER NAME &amp; NUMBER</th>
+                                                                                            <td>{data.address}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">Engineer Name &amp; Number</th>
 
-                                                                                        <td>{data.engineer}-{data.engineer_number}</td>
+                                                                                            <td>{data.engineer}-{data.engineer_number}</td>
 
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">BM NAME</th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">BM Name</th>
 
-                                                                                        <td>{data.bm_name}</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                                            <td>{data.bm_name}</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
+
                                                                     </div>
 
                                                                 </div>
@@ -222,77 +242,76 @@ function Edit_boq() {
                                                         </div>
 
                                                     </div>
+                                                </section>
+                                            </div>
 
-                                                </div>
-                                            </section>
                                         </div>
 
-                                    </div>
+                                        <div className='card'>
+                                            <div className='card-header'>
+                                                <h5>Edit BOQ</h5>
+                                            </div>
+                                            <div className='card-body'>
+                                                {boq.map((item, index) => (
+                                                    <div className="row highlight" key={index}>
+                                                        <div className="col-sm-6 material">
+                                                            <label>{index + 1}. Material</label>
+                                                            <input type="text"
+                                                                name="material"
+                                                                className="form-control"
+                                                                value={item.material}
+                                                                onChange={updateState(index)} />
+                                                        </div>
 
-                                    <div className='card'>
-                                        <div className='card-header'>
-                                            <h5>Edit BOQ</h5>
-                                        </div>
-                                        <div className='card-body'>
-                                            {boq.map((item, index) => (
-                                                <div className="row highlight" key={index}>
-                                                    <div className="col-sm-6 material">
-                                                        <label>{index + 1}. Material</label>
-                                                        <input type="text"
-                                                            name="material"
-                                                            className="form-control"
-                                                            value={item.material}
-                                                            onChange={updateState(index)} />
-                                                    </div>
+                                                        <div className="col-sm-2 serial_number">
+                                                            <label>Serial Number</label>
+                                                            <input type="text"
+                                                                className="form-control"
 
-                                                    <div className="col-sm-2 serial_number">
-                                                        <label>Serial Number</label>
-                                                        <input type="text"
-                                                            className="form-control"
+                                                                name="serial_number"
+                                                                onChange={updateState(index)}
+                                                            />
+                                                        </div>
+                                                        <div className="col-sm-1 qty">
+                                                            <label> Quantity </label>
+                                                            <input type="text"
+                                                                className="form-control"
+                                                                name='qty'
+                                                                value={item.qty}
+                                                                onChange={updateState(index)}
+                                                            />
+                                                        </div>
+                                                        <div className="col-sm-3 remark">
+                                                            <label>Remark</label>
+                                                            <input type="text"
+                                                                className="form-control"
+                                                                name='remark'
+                                                                value={item.remark}
+                                                                onChange={updateState(index)}
+                                                            />
+                                                        </div>
 
-                                                            name="serial_number"
-                                                            onChange={updateState(index)}
-                                                        />
                                                     </div>
-                                                    <div className="col-sm-1 qty">
-                                                        <label> Quantity </label>
-                                                        <input type="text"
-                                                            className="form-control"
-                                                            name='qty'
-                                                            value={item.qty}
-                                                            onChange={updateState(index)}
-                                                        />
-                                                    </div>
-                                                    <div className="col-sm-3 remark">
-                                                        <label>Remark</label>
-                                                        <input type="text"
-                                                            className="form-control"
-                                                            name='remark'
-                                                            value={item.remark}
-                                                            onChange={updateState(index)}
-                                                        />
-                                                    </div>
+                                                ))}
+                                                <div className="col-sm-12" >
+                                                    <label>Remark</label>
 
+                                                    <input type="text" name="not_remark" value={not_Remark} onChange={handleChange} className="form-control" />
+
+
+                                                    <input type="submit" name="submit" onClick={SubmitEditBoq} className="btn btn-success" />
                                                 </div>
-                                            ))}
-                                            <div className="col-sm-12" >
-                                                <label>Remark</label>
-
-                                                <input type="text" name="not_remark" value={not_Remark} onChange={handleChange} className="form-control" />
-
-
-                                                <input type="submit" name="submit" onClick={SubmitEditBoq} className="btn btn-success" />
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 export default Edit_boq;
